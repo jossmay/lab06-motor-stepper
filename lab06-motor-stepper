@@ -1,0 +1,17 @@
+#include <Stepper.h>
+
+int stepsServo = 2048; // Cantidad de pasos por vuelta/revolucion
+int velocidadServo = 10; // Variable con la velocidad del motor stepper.
+Stepper myStepper(stepsServo,8,10,9,11);
+int espera = 1000;
+
+void setup() {
+  myStepper.setSpeed(velocidadServo); //Darle velocidad al motor stepper.
+  Serial.begin(9600);
+}
+
+void loop() {
+  myStepper.step(stepsServo); //Hacia adelante
+  delay(espera);
+  myStepper.step(-stepsServo); //Hacia atrás
+}
